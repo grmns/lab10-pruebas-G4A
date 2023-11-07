@@ -10,11 +10,13 @@
 # UNIX or MAC
 spring:
   datasource :
-    url : jdbc:mysql://localhost:3306/PETCLINIC_DB?useSSL=false
+    # Mac
+    #    url : jdbc:mysql://localhost:3306/PETCLINIC_DB?useSSL=false
     # Windoows
-    # url : jdbc:mysql://localhost:3306/PETCLINIC_DB?useSSL=false&serverTimezone=UTC
-    username : root
-    password :
+    url : jdbc:mysql://localhost:3306/PETCLINIC_DB?useSSL=false&serverTimezone=UTC
+
+    username : grmn
+    password : grmn72463758
 
     platform : mysql
     initialization-mode : always
