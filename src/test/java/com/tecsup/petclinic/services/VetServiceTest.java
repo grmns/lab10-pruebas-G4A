@@ -98,4 +98,34 @@ public class VetServiceTest {
             assertTrue(true);
         }
     }
+
+    @Test
+    public void testFindVetById(){
+        String First_name = "Helen";
+        Integer Id = 2;
+        Vet vet = null;
+
+        try{
+            vet = this.vetService.findById(Id);
+        }catch (VetNotFoundException e){
+            fail(e.getMessage());
+        }
+        assertEquals(First_name, vet.getFirstName());
+    }
+
+    @Test
+    public void testFindVetByFirstName(){
+        String First_name = "Helen";
+        int size = 1;
+        List<Vet> vets = this.vetService.findByFirstName(First_name);
+        assertEquals(size,vets.size());
+    }
+
+    @Test
+    public void testFindVetByLastName(){
+        String Last_name = "Leary";
+        int size = 1;
+        List<Vet> vets = this.vetService.findByLastName(Last_name);
+        assertEquals(size,vets.size());
+    }
 }
