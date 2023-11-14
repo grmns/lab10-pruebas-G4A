@@ -68,4 +68,34 @@ public class VetServiceTest {
         assertEquals(UP_FIRST_NAME, upgradedVet.getFirstName());
         assertEquals(UP_LAST_NAME, upgradedVet.getLastName());
     }
+
+    @Test
+    public void testDeleteVet() {
+
+        String FIRST_NAME = "Jared";
+        String LAST_NAME = "Garcia";
+
+        // ------------ Create ---------------
+
+        Vet vet = new Vet(FIRST_NAME, LAST_NAME);
+        vet = this.vetService.create(vet);
+        log.info(("" + vet));
+
+        // ------------ Delete ---------------
+
+        try {
+            this.vetService.delete(vet.getId());
+        } catch (VetNotFoundException e) {
+            fail(e.getMessage());
+        }
+
+        // ------------ Validation ---------------
+
+        try {
+            this.vetService.findById(vet.getId());
+            assertTrue(false);
+        } catch (VetNotFoundException e) {
+            assertTrue(true);
+        }
+    }
 }
